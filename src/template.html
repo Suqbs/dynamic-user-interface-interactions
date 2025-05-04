@@ -1,11 +1,53 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <title>Dropdown Menu and Image Carousel</title> -->
+  </head>
+  <body>
+    <h1>Dropdown Menu and Image Carousel</h1>
+    <p>Click the button to toggle the dropdown menu.</p>
+    <p>Click the button to toggle the image carousel.</p>
+
+    <div class="container">
+      <div id="dropdown-container">
+        <button id="dropdown-button">Click to Reveal</button>
+        <div id="dropdown-menu">
+          <ul id="dropdown-list">
+            <li>Option 1</li>
+            <li>Option 2</li>
+            <li>Option 3</li>
+          </ul>
+        </div>
+      </div>
+
+      <div id="image-carousel-container">
+        <div id="image-carousel">
+          <img class="image visible" src="./images/image1.jpg" alt="Image 1" />
+          <img
+            class="image"
+            src="./images/image2.jpg"
+            alt="Image 2"
+          />
+          <img
+            class="image"
+            src="./images/image3.jpg"
+            alt="Image 3"
+          />
+
+          <!-- dots at the bottom -->
+          <div id="dots-container">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+          </div>
+
+          <!--buttons to navigate the carousel -->
+          <button id="prev-button">&lt;</button>
+          <button id="next-button">&gt;</button>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
