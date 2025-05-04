@@ -18,14 +18,24 @@ previousButton.addEventListener("click", function () {
   });
   if (!currentImage) return;
 
+  const currentDot = Array.from(dots).find((dot) => {
+    return dot.classList.contains("active");
+  });
+  if (!currentDot) return;
+
   if (currentImage === images[0]) {
     currentImage.classList.remove("visible");
     images[images.length - 1].classList.add("visible");
+    currentDot.classList.remove("active");
+    dots[dots.length - 1].classList.add("active");
     return;
   } else {
     currentImage.classList.remove("visible");
     const previousImage = images[Array.from(images).indexOf(currentImage) - 1];
     previousImage.classList.add("visible");
+    currentDot.classList.remove("active");
+    const previousDot = dots[Array.from(images).indexOf(previousImage)];
+    previousDot.classList.add("active");
   }
 });
 
@@ -35,14 +45,24 @@ nextButton.addEventListener("click", function () {
   });
   if (!currentImage) return;
 
+  const currentDot = Array.from(dots).find((dot) => {
+    return dot.classList.contains("active");
+  });
+  if (!currentDot) return;
+
   if (currentImage === images[images.length - 1]) {
     currentImage.classList.remove("visible");
     images[0].classList.add("visible");
+    currentDot.classList.remove("active");
+    dots[0].classList.add("active");
     return;
   } else {
     currentImage.classList.remove("visible");
     const nextImage = images[Array.from(images).indexOf(currentImage) + 1];
     nextImage.classList.add("visible");
+    currentDot.classList.remove("active");
+    const nextDot = dots[Array.from(images).indexOf(nextImage)];
+    nextDot.classList.add("active");
   }
 });
 
