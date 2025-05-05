@@ -65,7 +65,7 @@ p {
 
 #prev-button, #next-button {
     align-self: center;
-    background-color: #33333395;
+    background-color: #4f4f4f78;
     height: 100%;
     padding: 2rem;
     font-size: 1.5rem;
@@ -73,7 +73,7 @@ p {
     cursor: pointer;
 
     &:hover {
-        background-color: #4f4f4f;
+        background-color: #33333395;
     }
 
     transition: background-color 0.3s ease-in-out;
