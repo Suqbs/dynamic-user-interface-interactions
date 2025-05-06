@@ -8,6 +8,34 @@ dropdownButton.addEventListener("click", function () {
   dropdownMenu.classList.toggle("visible");
 });
 
+const timerFunction = (() => {
+  const currentImage = Array.from(images).find((image) => {
+    return image.classList.contains("visible");
+  });
+  if (!currentImage) return;
+
+  const currentDot = Array.from(dots).find((dot) => {
+    return dot.classList.contains("active");
+  });
+  if (!currentDot) return;
+
+  if (currentImage === images[images.length - 1]) {
+    currentImage.classList.remove("visible");
+    images[0].classList.add("visible");
+    currentDot.classList.remove("active");
+    dots[0].classList.add("active");
+    return;
+  } else {
+    currentImage.classList.remove("visible");
+    const nextImage = images[Array.from(images).indexOf(currentImage) + 1];
+    nextImage.classList.add("visible");
+    currentDot.classList.remove("active");
+    const nextDot = dots[Array.from(images).indexOf(nextImage)];
+    nextDot.classList.add("active");
+  }
+});
+
+let timer = setInterval(timerFunction, 5000);
 const previousButton = document.querySelector("#prev-button");
 const nextButton = document.querySelector("#next-button");
 const images = document.querySelectorAll(".image");
@@ -22,6 +50,9 @@ previousButton.addEventListener("click", function () {
     return dot.classList.contains("active");
   });
   if (!currentDot) return;
+
+  clearInterval(timer);
+  timer = setInterval(timerFunction, 5000);
 
   if (currentImage === images[0]) {
     currentImage.classList.remove("visible");
@@ -49,6 +80,9 @@ nextButton.addEventListener("click", function () {
     return dot.classList.contains("active");
   });
   if (!currentDot) return;
+
+  clearInterval(timer);
+  timer = setInterval(timerFunction, 5000);
 
   if (currentImage === images[images.length - 1]) {
     currentImage.classList.remove("visible");
@@ -80,6 +114,9 @@ dots.forEach((dot) => {
     });
     if (!currentDot) return;
 
+    clearInterval(timer);
+    timer = setInterval(timerFunction, 5000);
+
     currentImage.classList.remove("visible");
     const index = Array.from(dots).indexOf(dot);
     currentDot.classList.remove("active");
@@ -87,30 +124,3 @@ dots.forEach((dot) => {
     images[index].classList.add("visible");
   });
 });
-
-setInterval(() => {
-  const currentImage = Array.from(images).find((image) => {
-    return image.classList.contains("visible");
-  });
-  if (!currentImage) return;
-
-  const currentDot = Array.from(dots).find((dot) => {
-    return dot.classList.contains("active");
-  });
-  if (!currentDot) return;
-
-  if (currentImage === images[images.length - 1]) {
-    currentImage.classList.remove("visible");
-    images[0].classList.add("visible");
-    currentDot.classList.remove("active");
-    dots[0].classList.add("active");
-    return;
-  } else {
-    currentImage.classList.remove("visible");
-    const nextImage = images[Array.from(images).indexOf(currentImage) + 1];
-    nextImage.classList.add("visible");
-    currentDot.classList.remove("active");
-    const nextDot = dots[Array.from(images).indexOf(nextImage)];
-    nextDot.classList.add("active");
-  }
-}, 5000);
